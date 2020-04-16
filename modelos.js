@@ -60,9 +60,11 @@ var percussion = [
 ]
 
 
-exports.guitars = guitars;
-exports.bassGuitar = bassGuitar;
-exports.pianos = pianos;
-exports.others = others;
-exports.percussion = percussion;
+module.exports = {
+    guitars,
+    bassGuitar,
+    pianos,
+    others,
+    percussion
+}
 
