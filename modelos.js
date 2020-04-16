@@ -1,6 +1,6 @@
 var guitars = {
     acoustic : [
-        {name : 'Guitarra Acústica Cort AC100op',value: 1.1 , price: 505900, units: 1},
+        {name : 'Guitarra Acústica Cort AC100op',value: 1.1 , price: 505900, units: 2},
         {name : 'Guitarra Acústica Squier Dreadnought',value: 1.2, price : 454900, units: 1},
         {name : 'Guitarra Acústica Valencia VC350', value: 1.3, price: 381900, units: 1},
         {name : 'Guitarra Acústica Fender CD-60SCCE', value : 1.4 ,price: 1379900, units: 1},

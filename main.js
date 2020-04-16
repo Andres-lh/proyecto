@@ -1,7 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
 const controladores = require('./controladores');
 const modelos = require('./modelos');
+var compra = require('./controladores').compra;
 
 
 function run(){
@@ -176,7 +178,9 @@ function run(){
         .then(answers => {
             
             if(answers.recibo === 'Generar Factura'){
-                fs.writeFile(`./${answers["gen-factura"]}`, JSON.stringify(compra), (err)=>{
+                var format = util.format('Productos : \n %j' , compra)
+                
+                fs.writeFile(`./${answers["gen-factura"]}`, format, (err)=>{
                     if(err) console.log(err);
                     console.log('factura generada');
                     
@@ -194,7 +198,10 @@ function run(){
                 } )
             }
 
+
             
+
+
             controladores.options(answers.Instrumento)
             controladores.options2(answers.carrito, answers.categoria)
             run();
@@ -206,5 +213,7 @@ function run(){
 run();
 
 setInterval(()=>{
-    console.log('\n Gracias por preferirnos')
+    console.log('\n Gracias por preferirnos, si necesitas ayuda puedes contactarnos')
 },30000)
+
+
