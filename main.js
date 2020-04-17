@@ -1,15 +1,34 @@
 const controladores = require('./controladores');
-var http = require('http');
+const http = require('http');
+const https = require('https');
 
 
-var server = http.createServer((req, res) =>{
+http.createServer((request, response) => {
+  const { headers, method, url } = request;
+  let body = [];
+  request.on('error', (err) => {
+    console.error(err);
+  }).on('data', (chunk) => {
+    body.push(chunk);
+  }).on('end', () => {
+    body = Buffer.concat(body).toString();
+
+    response.on('error', (err) => {
+      console.error(err);
+    });
+
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'application/json');
     
-    res.end('<h1>La aplicación se inició</h1>' , controladores.run);
-});
-server.listen(3000, () =>{
-   console.log("El servidor está listo");
-});
 
+    const responseBody = { headers, method, url, body};
+
+    response.write(JSON.stringify(responseBody));
+    response.end('La aplicacion se inició', controladores.run);
+    
+    
+  });
+}).listen(3000);
 
 
 setInterval(()=>{
