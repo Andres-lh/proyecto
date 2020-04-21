@@ -4,11 +4,21 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/main.js"
   },
   "author": "Andrés Lara",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^7.1.0"
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.1.0",
+    "mongoose": "^5.9.9",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
