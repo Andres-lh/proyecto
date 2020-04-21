@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 
 const app = express();
-require('./database/db')
+require('./database/db');
 
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'));
