@@ -19,9 +19,6 @@ router.post('/user/signup', passport.authenticate('local.signup', {
 });
 
 
-
-
-
 router.get('/user/signin', function (req, res, next) {
   var messages = req.flash('error');
   res.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
@@ -34,14 +31,14 @@ router.post('/user/signin', passport.authenticate('local.signin', {
   res.redirect('/user/profile');
 });
 
-router.get('/logout', isLoggedIn, (req, res, next) => {
+router.get('/user/logout', isLoggedIn, (req, res, next) => {
   req.logout();
   res.redirect('/');
 })
 
 
 
-router.get('/user/profile', /*isLoggedIn,*/ (req, res, next) => {
+router.get('/user/profile', isLoggedIn, (req, res, next) => {
   res.render('user/profile');
 });
 

@@ -11,7 +11,7 @@ const validator = require('express-validator');
 const passport = require('passport');
 const logger = require('morgan');
 const flash = require('connect-flash');
-//const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo')(session);
 
 
 const app = express();
@@ -40,9 +40,16 @@ app.use(session({
     secret: 'SecretPassword',
     resave: false,
     saveUninitialized: false,
-    //store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie: { maxAge: 120 * 60 * 60 }
   }));
+
+app.use((req, res, next)=>{
+    res.locals.login = req.isAuthenticated();
+    res.locals.session = req.session;
+    next();
+})
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
