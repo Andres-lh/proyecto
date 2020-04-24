@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const cookieParser =  require('cookie-parser');
 const morgan = require('morgan');
-const order = require('./controllers/order');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const validator = require('express-validator');

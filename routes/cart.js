@@ -31,23 +31,31 @@ router.get('/cart/shoppingCar', (req, res, next) => {
 
 });
 
-router.get('/remove/:id', (req, res, next) => {
+router.get('/cart/remove/:id', (req, res, next) => {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : { items: {} });
     cart.removeItems(productId);
     req.session.cart = cart;
-    res.redirect('/cart/shopping-cart');
+    res.redirect('shoppingCar');
 
 });
 
-router.get('/reduce/:id', (req, res, next) => {
+router.get('/cart/reduce/:id', (req, res, next) => {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : { items: {} });
     cart.reduceItem(productId);
     req.session.cart = cart;
-    res.redirect('/cart/shopping-cart');
+    res.redirect('shoppingCar');
 
 });
+
+router.get('/checkout',(req, res, next)=>{
+    if (!req.session.cart) {
+        return res.render('shoppingCar', { products: null });
+    }
+    var cart = new Cart(req.session.cart);
+    res.render('checkout', {total : cart.totalPrice})
+})
 
 
 
