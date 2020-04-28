@@ -11,9 +11,9 @@ module.exports = function Cart(newCart) {
         }
 
         storedItem.qty++;
-        storedItem.price = storedItem.item.price * storedItem.qty; //sub total
+        storedItem.price = storedItem.item.price * storedItem.qty; 
         this.totalQty++;
-        this.totalPrice += storedItem.item.price; //total
+        this.totalPrice += storedItem.item.price; 
     }
 
     this.addItems = function () {
@@ -28,16 +28,5 @@ module.exports = function Cart(newCart) {
         this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;
         delete this.items[id];
-    }
-
-    this.reduceItem = (id) => {
-        this.items[id].qty--;
-        this.items[id].price -= this.items[id].item.price;
-        this.totalQty--;
-        this.totalPrice -= this.items[id].item.price;
-
-        if (this.items[id].qty <= 0) {
-            delete this.items[id];
-        }
     }
 }

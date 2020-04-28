@@ -13,9 +13,11 @@ const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 
 
+
 const app = express();
 require('./database/db');
 require('./config/passport');
+var cartRouter = require('./routes/cart');
 
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'));
@@ -54,6 +56,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(validator());
+app.use('/cart', cartRouter);
 
 
 
@@ -62,6 +65,11 @@ app.use(validator());
 app.use(require('./routes/index.js'))
 app.use(require('./routes/cart.js'))
 app.use(require('./routes/users.js'))
+
+
+
+
+
 
 
 app.listen(app.get('port'), ()=>{

@@ -1,2 +1,36 @@
 <h1>Gracias por su compra</h1>
-<h2>total : ${{total}}</h2>
+
+
+<div class="row mt-5">
+    <div class="col-md-8 offset-md-2">
+        <h2>Factura</h2>
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:40%">Producto</th>
+                    <th style="width:10%">Precio</th>
+                    <th style="width:8%">Cantidad</th>
+                    <th style="width:22%" class="text-center">Subtotal</th>
+                    <th style="width:20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products }}
+                <tr>
+                    <td>{{ this.item.title }}</td>
+                    <td class="text-center">${{ this.item.price }}</td>
+                    <td class="text-center">{{ this.qty }}</td>
+                    <td class="text-center">${{ this.price }}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h2>total : ${{total}}</h2>
+
+    </div>
+</div>
+
+
+
+
