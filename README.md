@@ -1,2 +1,2 @@
 # E-commerce
-Tienda online de intrumentos musicales creada con NodeJS
+Tienda online de intrumentos musicales creada con NodeJS y express.js 
